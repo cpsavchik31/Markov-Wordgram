@@ -1,0 +1,49 @@
+
+Clara Savchik and cps52
+
+Run WordGramBenchmark for wordgrams of size 2-10 and record
+the number of WordGram values/objects that occur more than
+once as reported by the runs. For example, with WSIZE = 2,
+which generates 2-grams, the output of benchmark and benchmarkShift
+each indicates that the total # wordgrams generated is 177,634
+and that the # unique wordgrams is 117,181
+
+This means there are 177,634 - 117,181 = 60,453 WordGram values that
+occur more than once. Find these same numbers/values for other orders
+of k and complete the table below for different k-grams/different
+values of WSIZE
+
+WSIZE    # duplicates
+2        60,453
+3        10,756
+4        1987
+5        667
+6        362
+7        226
+8        151
+9        105
+10       73
+
+=====
+Explain in your own words the conceptual differences between
+the benchmark and benchmarkShift methods.
+Answer these questions:
+
+(1) Why the results of these methods should be the same in
+terms of changes made to the HashSet parameter passed to each method.
+Both of these methods add all possible WordGram objects of size WSIZE from the text file from
+the starting index 0.
+(2) What are the conceptual differences between the two
+benchmarking methods
+The first method manually increases the starting index k through the use of a for loop
+that makes each new WordGram start with a starting index k that is one higher than the previous
+to create all of the shifted WordGrams.
+However, the second method uses the .shiftAdd(s) with s equal to the next string in the file to create
+each new shifted WordGram.
+(3) Is the total amount of memory allocated for arrays
+the same or different in the two methods? Account for
+arrays created in the methods and arrays created by
+WordGram objects. Try to be quantitative in answering.
+The total memory is different. In benchmark, the array String[] Words adds and stores
+all strings from the given .txt file.  However in benchmarkShift, the array String[] Words
+stores only the first WSIZE (an integer) strings of the given .txt file.
